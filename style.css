@@ -271,13 +271,18 @@ body {
 }
 
 /* --- Timeline Sektion --- */
-.timeline-section { max-width: 1100px; margin: 0 auto; padding: 90px 20px; }
+.timeline-section { max-width: 1300px; margin: 0 auto; padding: 90px 20px; }
 
 /* Das eigentliche Timeline-Gerüst */
 .timeline {
     position: relative;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
+}
+
+@media screen and (min-width: 1400px) {
+    .timeline-section { max-width: 1440px; }
+    .timeline { max-width: 1320px; }
 }
 
 /* Die vertikale Center-Linie */
@@ -299,8 +304,12 @@ body {
     transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.timeline-item.left { left: 0; text-align: right; }
+.timeline-item.left { left: 0; text-align: left; }
 .timeline-item.right { left: 50%; text-align: left; }
+
+@media screen and (min-width: 769px) {
+    .timeline-item.left .content-card { margin-left: auto; }
+}
 
 /* Timeline Punkte auf der Linie */
 .timeline-dot {
@@ -327,6 +336,11 @@ body {
     position: relative;
     transition: all 0.4s ease;
     backdrop-filter: blur(6px);
+    max-width: 500px;
+}
+
+@media screen and (min-width: 1400px) {
+    .content-card { max-width: 560px; }
 }
 
 .timeline-item.left .content-card { border-right: 3px solid var(--cyan); }
@@ -361,7 +375,7 @@ body {
     margin-bottom: 15px;
 }
 
-.timeline-item.left .card-header { flex-direction: row-reverse; }
+
 
 .status-badge {
     font-size: 0.75rem;
@@ -380,8 +394,6 @@ body {
     flex-wrap: wrap;
     margin-bottom: 20px;
 }
-.timeline-item.left .tech-stack { justify-content: flex-end; }
-
 .tech-stack span {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border-color);
@@ -399,6 +411,14 @@ body {
     transition: opacity 0.3s;
 }
 .project-link:hover { opacity: 0.7; }
+
+.project-link.disabled {
+    color: var(--text-muted);
+    cursor: default;
+    font-weight: 600;
+    opacity: 0.55;
+}
+.project-link.disabled:hover { opacity: 0.55; }
 
 /* JS Trigger Klasse */
 .timeline-item.visible {
@@ -585,8 +605,7 @@ footer {
 
     .timeline-dot { left: 12px !important; top: 45px; }
 
-    .timeline-item.left .content-card { border-right: none; border-left: 3px solid var(--cyan); }
-    .timeline-item.left .card-header, .timeline-item.left .tech-stack { flex-direction: row; justify-content: flex-start; }
+    .timeline-item.left .content-card { border-right: none; border-left: 3px solid var(--cyan); margin-left: 0; max-width: none; }
 
     .header-container { flex-direction: column; gap: 15px; }
 
