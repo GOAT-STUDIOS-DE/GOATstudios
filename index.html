@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOAT Studios | Innovation durch Code</title>
     <meta name="description" content="GOAT Studios – ein Studio, das Code als Handwerk versteht. Performance-Optimierung, Gamification und Core-Systeme.">
+
+    <meta property="og:title" content="GOAT Studios | Innovation durch Code">
+    <meta property="og:description" content="GOAT Studios – ein Studio, das Code als Handwerk versteht. Performance-Optimierung, Gamification und Core-Systeme.">
+    <meta property="og:image" content="https://goatstudios.tech/og-image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://goatstudios.tech/">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -13,10 +24,15 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo-area">
-                <img src="GOAT_StudiosNOTEXT.png" alt="GOAT Studios Logo" class="logo">
+                <img src="GOAT_StudiosNOTEXT.png" alt="GOAT Studios Logo" class="logo" width="60" height="60" decoding="async">
                 <span class="brand-name">GOAT <span class="text-gradient">STUDIOS</span></span>
             </div>
-            <nav class="nav-links">
+            <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-links" id="nav-links">
                 <a href="#about">Über Uns</a>
                 <a href="#timeline">Timeline</a>
                 <a href="#contact" class="btn-sm">Kontakt</a>

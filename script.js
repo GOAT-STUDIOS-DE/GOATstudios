@@ -23,6 +23,54 @@ document.addEventListener("DOMContentLoaded", () => {
         timelineObserver.observe(item);
     });
 
+    // --- Hamburger-Menü (Mobile) ---
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    if (hamburger && navLinks) {
+        const closeMenu = () => {
+            navLinks.classList.remove("open");
+            hamburger.classList.remove("open");
+            hamburger.setAttribute("aria-expanded", "false");
+        };
+
+        hamburger.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("open");
+            hamburger.classList.toggle("open", isOpen);
+            hamburger.setAttribute("aria-expanded", String(isOpen));
+        });
+
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                closeMenu();
+            }
+        });
+    }
+
+    // --- Active-State für Nav-Links basierend auf sichtbarer Sektion ---
+    const navAnchors = document.querySelectorAll('.nav-links a[href*="#"]');
+    const sections = document.querySelectorAll("main section[id]");
+
+    if (navAnchors.length && sections.length) {
+        const navSectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute("id");
+                    navAnchors.forEach(a => {
+                        const isMatch = a.getAttribute("href").endsWith(`#${id}`);
+                        a.classList.toggle("active", isMatch);
+                    });
+                }
+            });
+        }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+
+        sections.forEach(sec => navSectionObserver.observe(sec));
+    }
+
     // --- Dynamisches Copyright-Jahr ---
     const yearEl = document.getElementById("current-year");
     if (yearEl) {

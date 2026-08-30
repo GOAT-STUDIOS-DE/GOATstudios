@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="goatGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#goatGradient)" d="
+    M 14 30
+    C 24 27, 33 33, 38 42
+    L 30 40
+    C 33 46, 38 49, 44 50
+    L 44 68
+    L 40 78
+    L 42 68
+    L 44 78
+    L 46 68
+    L 48 78
+    L 50 68
+    C 56 49, 61 46, 64 40
+    L 56 42
+    C 61 33, 70 27, 80 30
+    C 70 32, 63 38, 58 46
+    L 66 44
+    C 62 52, 56 56, 50 56
+    C 44 56, 38 52, 34 44
+    L 42 46
+    C 37 38, 30 32, 20 30
+    Z" />
+</svg>

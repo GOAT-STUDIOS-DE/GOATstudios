@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutz | GOAT Studios</title>
+    <meta name="description" content="Datenschutzerklärung der GOAT Studios Website – ohne Tracking, ohne Analytics.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -12,10 +16,15 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo-area">
-                <img src="GOAT_StudiosNOTEXT.png" alt="GOAT Studios Logo" class="logo">
+                <img src="GOAT_StudiosNOTEXT.png" alt="GOAT Studios Logo" class="logo" width="60" height="60" decoding="async">
                 <span class="brand-name">GOAT <span class="text-gradient">STUDIOS</span></span>
             </div>
-            <nav class="nav-links">
+            <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-links" id="nav-links">
                 <a href="index.html#about">Über Uns</a>
                 <a href="index.html#timeline">Timeline</a>
                 <a href="index.html#contact" class="btn-sm">Kontakt</a>
