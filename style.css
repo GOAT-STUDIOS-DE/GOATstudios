@@ -4,14 +4,14 @@
     --bg-card: rgba(22, 24, 33, 0.7);
     --bg-card-hover: rgba(28, 31, 43, 0.9);
     --border-color: rgba(255, 255, 255, 0.08);
-    
+
     --text-main: #f3f4f6;
     --text-muted: #9ca3af;
-    
+
     --purple: #a855f7;
     --cyan: #06b6d4;
     --gray-dark: #1f2937;
-    
+
     --glow-purple: rgba(168, 85, 247, 0.4);
     --glow-cyan: rgba(6, 182, 212, 0.4);
 }
@@ -105,35 +105,53 @@ body {
 
 /* --- Hero Sektion --- */
 .hero-section {
-    min-height: 85vh; /* Etwas mehr Höhe für besseres Spacing */
+    position: relative;
+    min-height: 78vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 160px 20px 80px 20px;
+    padding: 150px 20px 50px 20px;
     background: radial-gradient(circle at 50% 35%, rgba(168, 85, 247, 0.12), transparent 55%);
+    overflow: hidden;
 }
 
-.hero-content { 
-    max-width: 850px; 
+/* Subtile Grid-Textur statt purem Schwarz */
+.hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 80%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 80%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.hero-title { 
-    font-size: 3.8rem; 
-    font-weight: 800; 
-    line-height: 1.15; 
-    margin-bottom: 25px; 
+.hero-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 25px;
     letter-spacing: -1px;
 }
 
-.hero-subtitle { 
-    color: var(--text-main); 
-    font-size: 1.25rem; 
-    margin-bottom: 15px; 
-    font-weight: 400; 
+.hero-subtitle {
+    color: var(--text-main);
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    font-weight: 400;
     line-height: 1.7;
     max-width: 750px;
 }
@@ -142,7 +160,7 @@ body {
     color: var(--text-muted);
     font-size: 1.05rem;
     font-weight: 300;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
 }
 
 .hero-buttons {
@@ -177,6 +195,10 @@ body {
     box-shadow: 0 4px 20px var(--glow-purple);
     transition: transform 0.3s, box-shadow 0.3s;
     display: inline-block;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
 }
 
 .cta-button:hover {
@@ -184,11 +206,72 @@ body {
     box-shadow: 0 6px 25px var(--glow-cyan);
 }
 
-/* --- Timeline Sektion --- */
-.timeline-section { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
-.section-header { text-align: center; margin-bottom: 80px; }
-.section-header h2 { font-size: 2.5rem; margin-bottom: 100px; }
+/* --- Gemeinsame Section-Header-Styles --- */
+.section-header { text-align: center; margin-bottom: 70px; }
+.section-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
 .section-header p { color: var(--text-muted); }
+
+/* --- About Sektion --- */
+.about-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 90px 20px 60px 20px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.about-text p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.about-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.pillar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 22px 24px;
+    transition: all 0.3s ease;
+}
+
+.pillar-card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-3px);
+    border-color: var(--cyan);
+}
+
+.pillar-icon {
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.pillar-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+.pillar-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* --- Timeline Sektion --- */
+.timeline-section { max-width: 1100px; margin: 0 auto; padding: 90px 20px; }
 
 /* Das eigentliche Timeline-Gerüst */
 .timeline {
@@ -323,13 +406,159 @@ body {
     transform: translateY(0);
 }
 
+/* --- Kontakt Sektion --- */
+.contact-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 90px 20px 110px 20px;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.contact-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    backdrop-filter: blur(6px);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px var(--glow-cyan);
+}
+
+.contact-submit {
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+.contact-direct {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+    height: fit-content;
+}
+
+.contact-direct h3 { margin-bottom: 10px; font-size: 1.1rem; }
+.contact-direct p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px; font-weight: 300; }
+
+.contact-email {
+    color: var(--cyan);
+    text-decoration: none;
+    font-weight: 600;
+    word-break: break-all;
+    transition: opacity 0.3s;
+}
+.contact-email:hover { opacity: 0.75; }
+
+/* --- Legal Pages (Impressum / Datenschutz) --- */
+.legal-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 150px 20px 100px 20px;
+}
+
+.legal-content h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.legal-content p {
+    color: var(--text-muted);
+    font-weight: 300;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
 /* --- Footer --- */
 footer {
-    text-align: center;
-    padding: 40px 20px;
     border-top: 1px solid var(--border-color);
+    padding: 50px 20px 30px 20px;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.footer-tagline {
     color: var(--text-muted);
     font-size: 0.85rem;
+    margin-top: 8px;
+    font-weight: 300;
+}
+
+.footer-links,
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links a,
+.footer-social a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover,
+.footer-social a:hover { color: var(--text-main); }
+
+.footer-copy {
+    text-align: center;
+    padding-top: 25px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 /* --- Responsive Media Queries (Mobile First für die Timeline) --- */
@@ -338,23 +567,28 @@ footer {
     .hero-subtitle { font-size: 1.1rem; }
     .hero-buttons { flex-direction: column; width: 100%; gap: 15px; }
     .cta-button, .hero-contact-btn { width: 100%; text-align: center; }
-    
+
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+
+    .contact-wrapper { grid-template-columns: 1fr; }
+
     .timeline::after { left: 20px; } /* Linie nach ganz links verschieben */
-    
+
     .timeline-item {
         width: 100%;
         padding-left: 55px;
         padding-right: 0;
         text-align: left !important;
     }
-    
+
     .timeline-item.right { left: 0; }
-    
+
     .timeline-dot { left: 12px !important; top: 45px; }
-    
+
     .timeline-item.left .content-card { border-right: none; border-left: 3px solid var(--cyan); }
     .timeline-item.left .card-header, .timeline-item.left .tech-stack { flex-direction: row; justify-content: flex-start; }
-    
-    .header-container { flex-direction: column; gap: 15px; }
-}
 
+    .header-container { flex-direction: column; gap: 15px; }
+
+    .footer-container { flex-direction: column; }
+}
